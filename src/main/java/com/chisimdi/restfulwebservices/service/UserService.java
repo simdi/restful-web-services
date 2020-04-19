@@ -32,4 +32,13 @@ public class UserService {
     return user.get();
   }
 
+  public UserModel updateUser(int id, UserModel user) {
+    user.setId(id);
+    return userDAO.save(user);
+  }
+
+  public void deleteUser(int id) {
+    userDAO.deleteById(id);
+  }
+
 }
