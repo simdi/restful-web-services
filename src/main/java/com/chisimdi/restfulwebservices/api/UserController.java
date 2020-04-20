@@ -3,7 +3,8 @@ package com.chisimdi.restfulwebservices.api;
 import java.net.URI;
 import java.util.List;
 
-import com.chisimdi.restfulwebservices.dao.UserDAO;
+import javax.validation.Valid;
+
 import com.chisimdi.restfulwebservices.model.UserModel;
 import com.chisimdi.restfulwebservices.service.UserService;
 
@@ -34,7 +35,7 @@ public class UserController {
   }
 
   @PostMapping("/users")
-  public ResponseEntity<Object> postUser(@RequestBody UserModel user) {
+  public ResponseEntity<Object> postUser(@Valid @RequestBody UserModel user) {
     UserModel savedUser = userService.save(user);
     // I want to return the newly created path
     URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();

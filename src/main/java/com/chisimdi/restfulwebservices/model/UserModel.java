@@ -6,13 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 public class UserModel {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int Id;
+  @Size(min = 2)
   private String name;
+  @Past
   private Date dob;
 
   public UserModel() {}
